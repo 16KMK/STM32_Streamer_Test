@@ -42,7 +42,7 @@ class SbW_Streamer:
     def CRC (self,data:list[np.uint8], len:np.uint16)->np.uint16:
         CRC_Result:np.uint16 =0
         for i in range(0,len) :
-            CRC_Result += data[i]
+            CRC_Result += int(data[i])
         return CRC_Result
     
 #user functions

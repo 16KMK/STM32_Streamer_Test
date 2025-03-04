@@ -1,4 +1,6 @@
 import SbW_Streamer
+import numpy as np
+
 
 #Import the COM PORT
 streamer=SbW_Streamer.SbW_Streamer('COM4',115200,1)
@@ -15,16 +17,17 @@ R_S = streamer.Get_Set_SamplingFreq(1)
 print(R_S)
 """
 
+
 #Write one frame
 """
-streamer.SamplingFreq = 12
+streamer.SamplingFreq = np.uint16(65535)
 W_S = streamer.Get_Set_SamplingFreq(0)
 print(W_S)
 """
 
 #Read & Write multiple frames
 """
-for y in range(0,65536):
+for y in range(0,65535):
     
     for j in range(0,2):
         if j == 0 :
@@ -46,7 +49,7 @@ print(R_F)
 
 #write one frame
 """
-streamer.FrameLength = 12
+streamer.FrameLength = np.uint8(255)
 W_F = streamer.Get_Set_FrameLength(0)
 print(W_F)
 """
